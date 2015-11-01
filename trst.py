@@ -18,6 +18,8 @@ def build_parser():
     parser.add_argument('-Q', '--literal', dest='literal', action='store_true',
                         help="Force all arguments to be escaped; note that " + \
                         " leading escape characters will not be removed")
+    parser.add_argument('-d', '--debug', dest='debug', action='store_true',
+                        help="Operate in special debugging mode")
     parser.add_argument('-e', '--escape', dest='esc',
                         help="Prefix to force escaping immediately subsequent " +
                         "metacharacters; defaults to %%",
@@ -74,10 +76,27 @@ def main(args):
         
     for idx, line in enumerate(sys.stdin):
         line = line.strip()
-        out = re.sub(regex, replacement, line)
-        spam("%d: %s" % (idx, line))
-        spam("%d: %s" % (idx, out))
-        print("%s" % (out,))
+        if args.debug is True:
+            for eidx, expr in enumerate(exprs):
+                # does it match?
+                # if it does, print line
+                # and print a line below with carets
+                # chop up line, try to match using the next expr
+                # if it does not show the arg that doesn't and then give up for this line
+                mo = re.search(re.compile(expr), line)
+                if mo is not None:
+                    print("expression #%d %s matches" % (eidx + 1, expr))
+                    print("> %s" % (line,))
+                    spaces = ''.join([' ' for _ in range(0, mo.span()[0])])
+                    carets = ''.join(['^' for _ in range(0, mo.span()[1] - mo.span()[0])])
+                    print("  %s%s" % (spaces, carets))
+                else:
+                    print("expression %s does not match" % (expr,))
+        else:
+            out = re.sub(regex, replacement, line)
+            spam("%d: %s" % (idx, line))
+            spam("%d: %s" % (idx, out))
+            print("%s" % (out,))
     
     pass
 
