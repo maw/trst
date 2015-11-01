@@ -3,6 +3,13 @@
 import re
 import sys
 
+VERBOSE = False
+
+def spam(str):
+    if VERBOSE is True:
+        sys.stderr.write("fdsa\n")
+        sys.stderr.flush()
+
 def build_parser():
     import argparse
     
@@ -32,9 +39,10 @@ def main(args):
     # print(args.expressions)
     # print(type(args.expressions))
     # print(len(args.expressions))
+    if args.verbose is True:
+        VERBOSE = True
     if len(args.expressions) < 2:
-        if args.verbose:
-            sys.stderr.write("fdsa\n")
+        spam("too few arguments")
         sys.exit(1)
     
     esc = args.esc
@@ -42,27 +50,28 @@ def main(args):
     replacement = args.expressions[-1]
     
     def maybe_escape(arg):
-        print("esc: %s" % (esc,))
+        spam("esc: %s" % (esc,))
         if arg.startswith(esc):
-            print("escaping")
+            spam("escaping")
             return re.escape(arg[1:])
         return arg
     
     exprs = ['(' + maybe_escape(expr) + ')' for expr in args.expressions[:-1]]
-    print("exprs: %s" % (exprs,))
+    spam("exprs: %s" % (exprs,))
     jchar = ''
     if args.inject_spaces is True:
         jchar = ' '
     expr = jchar.join(exprs)
-    print("expr: %s" % (expr,))
+    spam("expr: %s" % (expr,))
     regex = re.compile(expr)
-    print("regex: %s" % (regex,))
+    spam("regex: %s" % (regex,))
         
     for idx, line in enumerate(sys.stdin):
         line = line.strip()
         out = re.sub(regex, replacement, line)
-        print("%d: %s" % (idx, line))
-        print("%d: %s" % (idx, out))
+        spam("%d: %s" % (idx, line))
+        spam("%d: %s" % (idx, out))
+        print("%s" % (out,))
     
     pass
 
