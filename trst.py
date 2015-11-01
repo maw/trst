@@ -15,7 +15,11 @@ def build_parser():
     
     parser = argparse.ArgumentParser(description='replace things')
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true')
-    parser.add_argument('-Q', '--literal', dest='esc',
+    parser.add_argument('-Q', '--literal', dest='literal', action='store_true',
+                        help="Force all arguments to be escaped; note that " + \
+                        " leading escape characters will not be removed " + \
+                        "(not yet implemented)")
+    parser.add_argument('-e', '--escape', dest='esc',
                         help="Prefix to force escaping immediately subsequent " +
                         "metacharacters; defaults to %%",
                         default='%')
