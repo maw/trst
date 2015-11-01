@@ -1,16 +1,16 @@
 trst - kind of like sed
 
-What is this?
+What is trst?
 =============
 
 trst is a program to read input streams, replacing certain patterns with
 certain other patterns.  It is modelled loosely on the classic sed program,
-but it aims to be easier to use while remaining as powerful.
+but it aims to be easier to use while remaining as powerful in most use cases.
 
 What does trst mean?
 ====================
 
-tr for TRanslate, TRansfigure, TRansform.  st for STrings or STreams.
+tr is for TRanslate, TRansfigure, TRansform.  st is for STrings or STreams.
 
 Also sed is Spanish for thirst and trst isn't too far from how a native
 Spanish speaker might pronounce thirst.
@@ -18,16 +18,37 @@ Spanish speaker might pronounce thirst.
 Why should I use it?
 ====================
 
-When using sed, have you ever got your regular expressions right very quickly,
+When using sed, have you ever got your regular expressions right quickly,
 only to spend far too much time getting escaping -- both for the shell and for
 sed itself -- right? I have.
 
-trst also includes a number of convenient extras:
+trst attempts to alleviate that pain through a variety of convenient features.
 
-The --spaces argument:
+* Easy escaping and easy to read positional arguments
 
-echo 'first second third' | ./trst.py --verbose -s all first second third '\3 \2 \1'
+  By default when '%' starts an expression the expression is escaped. (You can choose a
+  different character for this if you wish.)
 
+  Try this:
+
+  `echo '$dont[dothis] = 123;' | ./trst.py all '%$' '[a-zA-Z0-9]+' '%[' '[a-zA-Z][a-zA-Z0-9]*' '%]' "\1\2\3'\4'\5"`
+
+  Now try to do it in sed. Modulo tyops, did it work right for you the first
+  time with sed? It didn't for me, but with trst it did.
+
+
+* The --spaces argument:
+
+  Try this:
+
+  `echo 'first second third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'`
+
+  Or this:
+
+  `echo 'first      second  third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'`
+
+Of course, sometimes debugging your regular expressions really is the hard
+part. When this is the case, trst's --debug might be helpful.
 
 
 Why shouldn't I use it?
@@ -36,16 +57,27 @@ Why shouldn't I use it?
 It's certainly buggy. Please don't use it on important files you don't have
 backed up or which aren't in version control.
 
+Also, trst's command line arguments and flags are experimental and subject to
+change. If you use it in a script your script could break later.
+
 Why is it in Python?
 ====================
 
-Easy prototyping.  Getting the command line parsing is tricky, not because
-libraries to do it are deficient (quite the opposite in fact) but rather
-because it isn't really clear at all what the command line arguments should
-be. Doing it in Python means that I -- and hopefully you too -- can
+Easy prototyping.  Getting the command line parsing right is tricky, not
+because libraries to do it are deficient (quite the opposite in fact) but
+rather because it isn't really clear at all what the command line
+arguments should be. Doing it in Python means that I -- and hopefully
+you too -- can experiment easily.
 
 Once I'm reasonably happy with how it works, rewriting it in a faster
 language is something I'm open to.
+
+What remains to be done?
+========================
+
+* Create a test suite
+* Fix bugs
+* Come up with a ridiculous logo.
 
 Random notes
 ============
