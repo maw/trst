@@ -14,8 +14,10 @@ def build_parser():
     import argparse
     
     parser = argparse.ArgumentParser(description='replace things')
-    parser.add_argument('-v', '--verbose', action='store_true')
-    parser.add_argument('-e', '--escape-char', dest='esc', help="help!",
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true')
+    parser.add_argument('-Q', '--literal', dest='esc',
+                        help="Prefix to force escaping immediately subsequent " +
+                        "metacharacters; defaults to %%",
                         default='%')
     parser.add_argument('-s', '--spaces', dest='inject_spaces', help="inject spaces",
                         action='store_true', default=False)
