@@ -38,14 +38,10 @@ def build_parser():
     
     return parser
 
-
 def main(args):
     parser = build_parser()
     
     args = parser.parse_args()
-    # print(args.expressions)
-    # print(type(args.expressions))
-    # print(len(args.expressions))
     if args.verbose is True:
         VERBOSE = True
     if len(args.expressions) < 2:
@@ -53,7 +49,6 @@ def main(args):
         sys.exit(1)
     
     esc = args.esc
-    # print(args.esc)
     replacement = args.expressions[-1]
     
     def maybe_escape(arg):
