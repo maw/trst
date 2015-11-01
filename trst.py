@@ -22,6 +22,8 @@ def build_parser():
                         help="Prefix to force escaping immediately subsequent " +
                         "metacharacters; defaults to %%",
                         default='%')
+    parser.add_argument('-i', '--ignore-case', dest='case_insensitive',
+                        action='store_true', help="Match case insensitively (not yet implemented)")
     parser.add_argument('-s', '--spaces', dest='inject_spaces', help="inject spaces",
                         action='store_true', default=False)
     
