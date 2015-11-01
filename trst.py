@@ -17,8 +17,7 @@ def build_parser():
     parser.add_argument('-v', '--verbose', dest='verbose', action='store_true')
     parser.add_argument('-Q', '--literal', dest='literal', action='store_true',
                         help="Force all arguments to be escaped; note that " + \
-                        " leading escape characters will not be removed " + \
-                        "(not yet implemented)")
+                        " leading escape characters will not be removed")
     parser.add_argument('-e', '--escape', dest='esc',
                         help="Prefix to force escaping immediately subsequent " +
                         "metacharacters; defaults to %%",
@@ -62,11 +61,15 @@ def main(args):
             return re.escape(arg[1:])
         return arg
     
-    exprs = ['(' + maybe_escape(expr) + ')' for expr in args.expressions[:-1]]
+    if args.literal is True:
+        exprs = ['(' + re.escape(expr) + ')' for expr in args.expressions[:-1]]
+    else:
+        exprs = ['(' + maybe_escape(expr) + ')' for expr in args.expressions[:-1]]
     spam("exprs: %s" % (exprs,))
     jchar = ''
     if args.inject_spaces is True:
         jchar = '\s*'
+    
     expr = jchar.join(exprs)
     spam("expr: %s" % (expr,))
     regex = re.compile(expr)
