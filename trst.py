@@ -77,6 +77,7 @@ def main(args):
     for idx, line in enumerate(sys.stdin):
         line = line.strip()
         if args.debug is True:
+            matches = []
             for eidx, expr in enumerate(exprs):
                 # does it match?
                 # if it does, print line
@@ -85,11 +86,17 @@ def main(args):
                 # if it does not show the arg that doesn't and then give up for this line
                 mo = re.search(re.compile(expr), line)
                 if mo is not None:
+                    last_match = None
+                    if len(matches) > 0:
+                        last_match = matches[-1]
                     print("expression #%d %s matches" % (eidx + 1, expr))
+                    if last_match is not None and mo.span()[0] <= last_match.span()[1]:
+                        print("but it came before the previous match!")
                     print("> %s" % (line,))
                     spaces = ''.join([' ' for _ in range(0, mo.span()[0])])
                     carets = ''.join(['^' for _ in range(0, mo.span()[1] - mo.span()[0])])
                     print("  %s%s" % (spaces, carets))
+                    matches.append(mo)
                 else:
                     print("expression %s does not match" % (expr,))
         else:
