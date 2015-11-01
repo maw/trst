@@ -60,7 +60,7 @@ def main(args):
     spam("exprs: %s" % (exprs,))
     jchar = ''
     if args.inject_spaces is True:
-        jchar = ' '
+        jchar = '\s*'
     expr = jchar.join(exprs)
     spam("expr: %s" % (expr,))
     regex = re.compile(expr)
