@@ -10,7 +10,8 @@ but it aims to be easier to use while remaining as powerful in most use cases.
 What does trst mean?
 ====================
 
-tr is for TRanslate, TRansfigure, TRansform.  st is for STrings or STreams.
+tr is for TRanslate, TRansfigure, TRansform, TRansmute.  st is for STrings
+or STreams.
 
 Also sed is Spanish for thirst and trst isn't too far from how a native
 Spanish speaker might pronounce thirst.
