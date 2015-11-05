@@ -51,6 +51,16 @@ trst attempts to alleviate that pain through a variety of convenient features.
 Of course, sometimes debugging your regular expressions really is the hard
 part. When this is the case, trst's --debug might be helpful.
 
+* The --debug argument:
+
+  Try this:
+
+  `echo 'hello world' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'`
+
+  Then try this:
+
+  `echo 'world hello' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'`
+
 
 Why shouldn't I use it?
 =======================
