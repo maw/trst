@@ -48,12 +48,10 @@ trst attempts to alleviate that pain through a variety of convenient features.
 
   `echo 'first      second  third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'`
 
-Of course, sometimes debugging your regular expressions really is the hard
-part. When this is the case, trst's --debug might be helpful.
-
 * The --debug argument:
 
-  Try this:
+  Of course, sometimes debugging your regular expressions really is the hard
+  part. If so, try this:
 
   `echo 'hello world' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'`
 
