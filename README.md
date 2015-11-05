@@ -13,7 +13,7 @@ What does trst mean?
 tr is for TRanslate, TRansfigure, TRansform, TRansmute.  st is for STrings
 or STreams.
 
-Also sed is Spanish for thirst and trst isn't too far from how a native
+"sed" is Spanish for thirst; "trst" isn't too far from how a native
 Spanish speaker might pronounce thirst.
 
 Why should I use it?
