@@ -84,6 +84,7 @@ language is something I'm open to.
 What remains to be done?
 ========================
 
+* Improve arguments and their semantics
 * Create a test suite
 * Fix bugs
 * Come up with a ridiculous logo.
