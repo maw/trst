@@ -27,8 +27,8 @@ trst attempts to alleviate that pain through a variety of convenient features.
 
 * Easy escaping and easy to read positional arguments
 
-  By default when '%' starts an expression the expression is escaped. (You can choose a
-  different character for this if you wish.)
+  By default when '%' starts an expression the expression is escaped. (You can
+  choose a different character for this if you wish.)
 
   Try this:
 
@@ -36,7 +36,6 @@ trst attempts to alleviate that pain through a variety of convenient features.
 
   Now try to do it in sed. Modulo tyops, did it work right for you the first
   time with sed? It didn't for me, but with trst it did.
-
 
 * The --spaces argument:
 
@@ -75,8 +74,11 @@ Why is it in Python?
 Easy prototyping.  Getting the command line parsing right is tricky, not
 because libraries to do it are deficient (quite the opposite in fact) but
 rather because it isn't really clear at all what the command line
-arguments should be. Doing it in Python means that I -- and hopefully
-you too -- can experiment easily.
+arguments should be.  After all, if there's one thing git has taught us,
+it's that getting a coherent command line interface right is paramount, and
+you can worry about getting internal structures right later.  Right?  Right.
+Anyway, doing it in Python means that I -- and hopefully you too -- can
+experiment easily.
 
 Once I'm reasonably happy with how it works, rewriting it in a faster
 language is something I'm open to.
