@@ -62,11 +62,20 @@ trst attempts to alleviate that pain through a variety of convenient features.
 Why shouldn't I use it?
 =======================
 
-It's certainly buggy. Please don't use it on important files you don't have
-backed up or which aren't in version control.
+First and most important: trst's command line arguments and flags are
+experimental and subject to change. If you use it in a script your
+script could break later.  In particular, the `all` argument is likely
+to go.
 
-Also, trst's command line arguments and flags are experimental and subject to
-change. If you use it in a script your script could break later.
+Second: It's certainly buggy. Please don't use it on important files
+you don't have backed up or which aren't in version control.
+
+Third: traditional sed and workalikes have an interesting conceptual lineage,
+linked with (The Standard Text Editor)[http://www.gnu.org/fun/jokes/ed-msg.html].
+trst discards this lineage entirely.  There are
+(cool things)[http://sed.sourceforge.net/grabbag/scripts/dc.sed]
+you can do with sed that you'll probably never be able to trst.
+
 
 Why is it in Python?
 ====================
