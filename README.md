@@ -121,4 +121,9 @@ Questions:
 
 * How to avoid or mitigate shell quoting annoyances?
 
-* What symbols -- ie, more or less anything you get by hitting shift + number
+* What symbols -- ie, more or less anything you get by hitting
+  shift + number -- are available for commandeering?
+  
+  Keep in mind that the symbols easily available on your keyboard might
+  not be so easily available on someone else's, especially when that
+  someone else lives in a different country.
