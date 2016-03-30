@@ -71,7 +71,8 @@ Second: It's certainly buggy. Please don't use it on important files
 you don't have backed up or which aren't in version control.
 
 Third: traditional sed and workalikes have an interesting conceptual lineage,
-linked with (The Standard Text Editor)[http://www.gnu.org/fun/jokes/ed-msg.html].
+and can be traced back (at least) to
+(The Standard Text Editor)[http://www.gnu.org/fun/jokes/ed-msg.html].
 trst discards this lineage entirely.  There are
 (cool things)[http://sed.sourceforge.net/grabbag/scripts/dc.sed]
 you can do with sed that you'll probably never be able to trst.
