@@ -67,7 +67,9 @@ experimental and subject to change. If you use it in a script your
 script could break later.  In particular, the `all` argument is likely
 to go.
 
-Second: It's certainly buggy. Please don't use it on important files
+Second: It's certainly buggy.  I don't know how well it will work
+with characters not included in ASCII.  Nor do I know how it will
+deal with different encodings.  Please don't use it on important files
 you don't have backed up or which aren't in version control.
 
 Third: traditional sed is part of an interesting conceptual lineage
