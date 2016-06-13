@@ -32,7 +32,7 @@ trst attempts to alleviate that pain through a variety of convenient features.
 
   Try this:
 
-  `echo '$dont[dothis] = 123;' | ./trst.py all '%$' '[a-zA-Z0-9]+' '%[' '[a-zA-Z][a-zA-Z0-9]*' '%]' "\1\2\3'\4'\5"`
+      echo '$dont[dothis] = 123;' | ./trst.py all '%$' '[a-zA-Z0-9]+' '%[' '[a-zA-Z][a-zA-Z0-9]*' '%]' "\1\2\3'\4'\5"
 
   Now try to do it in sed. Modulo tyops, did it work right for you the first
   time with sed? It didn't for me, but with trst it did.
@@ -41,7 +41,7 @@ trst attempts to alleviate that pain through a variety of convenient features.
 
   Try this:
 
-  `echo 'first second third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'`
+      echo 'first second third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'
 
   Or this:
 
@@ -52,11 +52,11 @@ trst attempts to alleviate that pain through a variety of convenient features.
   Of course, sometimes debugging your regular expressions really is the hard
   part. If so, try this:
 
-  `echo 'hello world' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'`
+      echo 'hello world' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'
 
   Then try this:
 
-  `echo 'world hello' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'`
+      echo 'world hello' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'
 
 
 Why shouldn't I use it?
