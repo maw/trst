@@ -45,7 +45,7 @@ trst attempts to alleviate that pain through a variety of convenient features.
 
   Or this:
 
-  `echo 'first      second  third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'`
+  {`echo 'first      second  third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'`}
 
 * The --debug argument:
 
