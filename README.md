@@ -75,10 +75,10 @@ you don't have backed up or which aren't in version control.
 
 Third: traditional sed is part of an interesting conceptual lineage
 which can be traced back at least as far as
-(The Standard Text Editor)[http://www.gnu.org/fun/jokes/ed-msg.html]
+[The Standard Text Editor](http://www.gnu.org/fun/jokes/ed-msg.html)
 and which extends to vi and its many clones and extensions.
 trst discards this lineage entirely.  There are
-(cool things)[http://sed.sourceforge.net/grabbag/scripts/dc.sed]
+[cool things](http://sed.sourceforge.net/grabbag/scripts/dc.sed)
 you can do with sed that you'll probably never be able to trst.
 
 
