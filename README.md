@@ -16,6 +16,17 @@ or STreams.
 "sed" is Spanish for thirst; "trst" isn't too far from how a native
 Spanish speaker might pronounce thirst.
 
+Installation
+============
+
+With [uv](https://docs.astral.sh/uv/):
+
+    uv tool install trst
+
+Or with pip:
+
+    pip install trst
+
 Why should I use it?
 ====================
 
@@ -32,46 +43,49 @@ trst attempts to alleviate that pain through a variety of convenient features.
 
   Try this:
 
-      echo '$dont[dothis] = 123;' | ./trst.py all '%$' '[a-zA-Z0-9]+' '%[' '[a-zA-Z][a-zA-Z0-9]*' '%]' "\1\2\3'\4'\5"
+      echo '$dont[dothis] = 123;' | trst '%$' '[a-zA-Z0-9]+' '%[' '[a-zA-Z][a-zA-Z0-9]*' '%]' "\1\2\3'\4'\5"
 
   Now try to do it in sed. Modulo tyops, did it work right for you the first
   time with sed? It didn't for me, but with trst it did.
 
-* The --spaces argument:
+* The `--spaces` argument:
 
   Try this:
 
-      echo 'first second third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'
+      echo 'first second third' | trst --verbose --spaces first second third '\3 \2 \1'
 
   Or this:
 
-      echo 'first      second  third' | ./trst.py --verbose --spaces all first second third '\3 \2 \1'
+      echo 'first      second  third' | trst --verbose --spaces first second third '\3 \2 \1'
 
-* The --debug argument:
+* The `--debug` argument:
 
   Of course, sometimes debugging your regular expressions really is the hard
   part. If so, try this:
 
-      echo 'hello world' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'
+      echo 'hello world' | trst --debug 'h[ea]llo' world  'wow dude'
 
   Then try this:
 
-      echo 'world hello' | ./trst.py --debug all 'h[ea]llo' world  'wow dude'
+      echo 'world hello' | trst --debug 'h[ea]llo' world  'wow dude'
 
+* The `--ignore-case` flag:
+
+  Match patterns regardless of case:
+
+      echo 'Hello World' | trst -i hello goodbye
 
 Why shouldn't I use it?
 =======================
 
-First and most important: trst's command line arguments and flags are
-experimental and subject to change. If you use it in a script your
-script could break later.  In particular, the `all` argument is likely
-to go.
+First: trst's command line arguments and flags are still evolving.
+If you use it in a script your script could break later.
 
-Second: It's certainly buggy.  I don't know how well it will work
-with characters not included in ASCII.  Nor do I know how it will
-deal with different encodings.  Getting this in order is important,
-but in the meantime, please don't use it on important files
-you don't have backed up or which aren't in version control.
+Second: I don't know how well it will work with characters not
+included in ASCII.  Nor do I know how it will deal with different
+encodings.  Getting this in order is important, but in the meantime,
+please don't use it on important files you don't have backed up or
+which aren't in version control.
 
 Third: traditional sed is part of an interesting conceptual lineage
 which can be traced back at least as far as
@@ -80,7 +94,6 @@ and which extends to vi and its many clones and extensions.
 trst discards this lineage entirely.  There are
 [cool things](http://sed.sourceforge.net/grabbag/scripts/dc.sed)
 you can do with sed that you'll probably never be able to trst.
-
 
 Why is it in Python?
 ====================
@@ -101,7 +114,6 @@ What remains to be done?
 ========================
 
 * Improve arguments and their semantics
-* Create a test suite
 * Fix bugs
 * Come up with a ridiculous logo.
 
@@ -116,19 +128,15 @@ trst [general args] [search args] [args]
 
 Questions:
 
-* What sorts of subcommands make sense?
-
-  Possibilities: replace-all, replace-any. If none, assume replace-all?
-
 * What sorts of general args make sense?
-  
+
   Apply more than once in a given line -- cf sed's /g -- by default?
 
 * How to avoid or mitigate shell quoting annoyances?
 
 * What symbols -- ie, more or less anything you get by hitting
   shift + number -- are available for commandeering?
-  
+
   Keep in mind that the symbols easily available on your keyboard might
   not be so easily available on someone else's, especially when that
   someone else lives in a different country.
